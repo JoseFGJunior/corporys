@@ -27,4 +27,6 @@ urlpatterns = [
     path('api/users/', include('api.urls.user_urls')),
     path('api/clientes/', include('api.urls.cliente_urls')),
     path('api/movimentacoes-estoque-items/', include('api.urls.movimentacao_estoque_com_items_urls')),
+    path('api/almoxarifados/', include('api.urls.sce_almoxarifado_urls')),
+    path('api/tipos-movimentacao-estoque/', include('api.urls.sce_tipo_movimentacao_estoque_urls')),
 ]

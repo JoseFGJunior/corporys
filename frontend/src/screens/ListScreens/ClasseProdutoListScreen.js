@@ -6,35 +6,35 @@ import ListComponent from "../../components/ListComponent";
 import { Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-import { listTiposProdutos, deleteTipoProduto} from "../../actions/tipoProdutoActions";
+import { listClassesProdutos, deleteClasseProduto} from "../../actions/classeProdutoActions";
 
-function TipoProdutoListScreen() {
+function ClasseProdutoListScreen() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const tipoProdutoList = useSelector((state) => state.tipoProdutoList);
-    const { loading, error, tiposProdutos } = tipoProdutoList;
+    const classeProdutoList = useSelector((state) => state.classeProdutoList);
+    const { loading, error, classesProdutos } = classeProdutoList;
 
-    const tipoProdutoDelete = useSelector((state) => state.tipoProdutoDelete);
-    const { success: successDelete } = tipoProdutoDelete;
+    const classeProdutoDelete = useSelector((state) => state.classeProdutoDelete);
+    const { success: successDelete } = classeProdutoDelete;
 
-    const tipoProdutoCreate = useSelector((state) => state.tipoProdutoCreate);
-    const { success: successCreate } = tipoProdutoCreate;
+    const classeProdutoCreate = useSelector((state) => state.classeProdutoCreate);
+    const { success: successCreate } = classeProdutoCreate;
 
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
-
+    
     useEffect(() => {
         if (userInfo) {
-            dispatch(listTiposProdutos());
+            dispatch(listClassesProdutos());
         } else {
             navigate("/login");
         }
     }, [dispatch, navigate, userInfo, successDelete, successCreate]);
 
     const deleteHandler = (id) => {
-        if (window.confirm("Tem certeza que deseja deletar este tipo de produto?")) {
-            dispatch(deleteTipoProduto(id));
+        if (window.confirm("Tem certeza que deseja deletar esta classe de produto?")) {
+            dispatch(deleteClasseProduto(id));
         }
     };
 
@@ -43,14 +43,14 @@ function TipoProdutoListScreen() {
             {userInfo && (
                 <Container>
                     <ListComponent
-                        title="Tipos de Produto"
-                        items={tiposProdutos}
+                        title="Classes de Produtos"
+                        items={classesProdutos}
                         onDelete={deleteHandler}
                         loading={loading}
                         error={error}
                         Loader={Loader}
                         Message={Message}
-                        linkUpdate="tiposprodutos"
+                        linkUpdate="classesprodutos"
                     />
                 </Container>
             )}
@@ -58,4 +58,4 @@ function TipoProdutoListScreen() {
     );
 }
 
-export default TipoProdutoListScreen;
+export default ClasseProdutoListScreen;

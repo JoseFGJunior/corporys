@@ -6,35 +6,35 @@ import ListComponent from "../../components/ListComponent";
 import { Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-import { listTiposProdutos, deleteTipoProduto} from "../../actions/tipoProdutoActions";
+import { listClientes, deleteCliente} from "../../actions/clienteActions";
 
-function TipoProdutoListScreen() {
+function ClienteListScreen() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const tipoProdutoList = useSelector((state) => state.tipoProdutoList);
-    const { loading, error, tiposProdutos } = tipoProdutoList;
+    const clienteList = useSelector((state) => state.clienteList);
+    const { loading, error, clientes } = clienteList;
 
-    const tipoProdutoDelete = useSelector((state) => state.tipoProdutoDelete);
-    const { success: successDelete } = tipoProdutoDelete;
+    const clienteDelete = useSelector((state) => state.clienteDelete);
+    const { success: successDelete } = clienteDelete;
 
-    const tipoProdutoCreate = useSelector((state) => state.tipoProdutoCreate);
-    const { success: successCreate } = tipoProdutoCreate;
+    const clienteCreate = useSelector((state) => state.clienteCreate);
+    const { success: successCreate } = clienteCreate;
 
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
-
+    
     useEffect(() => {
         if (userInfo) {
-            dispatch(listTiposProdutos());
+            dispatch(listClientes());
         } else {
             navigate("/login");
         }
     }, [dispatch, navigate, userInfo, successDelete, successCreate]);
 
     const deleteHandler = (id) => {
-        if (window.confirm("Tem certeza que deseja deletar este tipo de produto?")) {
-            dispatch(deleteTipoProduto(id));
+        if (window.confirm("Tem certeza que deseja deletar este cliente?")) {
+            dispatch(deleteCliente(id));
         }
     };
 
@@ -43,14 +43,14 @@ function TipoProdutoListScreen() {
             {userInfo && (
                 <Container>
                     <ListComponent
-                        title="Tipos de Produto"
-                        items={tiposProdutos}
+                        title="Clientes"
+                        items={clientes}
                         onDelete={deleteHandler}
                         loading={loading}
                         error={error}
                         Loader={Loader}
                         Message={Message}
-                        linkUpdate="tiposprodutos"
+                        linkUpdate="clientes"
                     />
                 </Container>
             )}
@@ -58,4 +58,4 @@ function TipoProdutoListScreen() {
     );
 }
 
-export default TipoProdutoListScreen;
+export default ClienteListScreen;

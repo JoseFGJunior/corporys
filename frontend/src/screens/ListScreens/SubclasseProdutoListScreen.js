@@ -6,35 +6,35 @@ import ListComponent from "../../components/ListComponent";
 import { Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-import { listTiposProdutos, deleteTipoProduto} from "../../actions/tipoProdutoActions";
+import { listSubclassesProdutos, deleteSubclasseProduto} from "../../actions/subclasseProdutoActions";
 
-function TipoProdutoListScreen() {
+function SubclasseProdutoListScreen() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const tipoProdutoList = useSelector((state) => state.tipoProdutoList);
-    const { loading, error, tiposProdutos } = tipoProdutoList;
+    const subclasseProdutoList = useSelector((state) => state.subclasseProdutoList);
+    const { loading, error, subclassesProdutos } = subclasseProdutoList;
 
-    const tipoProdutoDelete = useSelector((state) => state.tipoProdutoDelete);
-    const { success: successDelete } = tipoProdutoDelete;
+    const subclasseProdutoDelete = useSelector((state) => state.subclasseProdutoDelete);
+    const { success: successDelete } = subclasseProdutoDelete;
 
-    const tipoProdutoCreate = useSelector((state) => state.tipoProdutoCreate);
-    const { success: successCreate } = tipoProdutoCreate;
+    const subclasseProdutoCreate = useSelector((state) => state.subclasseProdutoCreate);
+    const { success: successCreate } = subclasseProdutoCreate;
 
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
-
+    
     useEffect(() => {
         if (userInfo) {
-            dispatch(listTiposProdutos());
+            dispatch(listSubclassesProdutos());
         } else {
             navigate("/login");
         }
     }, [dispatch, navigate, userInfo, successDelete, successCreate]);
 
     const deleteHandler = (id) => {
-        if (window.confirm("Tem certeza que deseja deletar este tipo de produto?")) {
-            dispatch(deleteTipoProduto(id));
+        if (window.confirm("Tem certeza que deseja deletar esta subclasseProduto?")) {
+            dispatch(deleteSubclasseProduto(id));
         }
     };
 
@@ -43,14 +43,14 @@ function TipoProdutoListScreen() {
             {userInfo && (
                 <Container>
                     <ListComponent
-                        title="Tipos de Produto"
-                        items={tiposProdutos}
+                        title="Subclasses de Produto"
+                        items={subclassesProdutos}
                         onDelete={deleteHandler}
                         loading={loading}
                         error={error}
                         Loader={Loader}
                         Message={Message}
-                        linkUpdate="tiposprodutos"
+                        linkUpdate="subclassesProdutos"
                     />
                 </Container>
             )}
@@ -58,4 +58,4 @@ function TipoProdutoListScreen() {
     );
 }
 
-export default TipoProdutoListScreen;
+export default SubclasseProdutoListScreen;

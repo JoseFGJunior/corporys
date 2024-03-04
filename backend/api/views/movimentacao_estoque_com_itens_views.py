@@ -8,6 +8,8 @@ class CreateMovimentacaoEstoqueComItens(APIView):
     def post(self, request, *args, **kwargs):
         movimentacao_data = request.data.get('movimentacao_data', {})
         items_data = request.data.get('items_data', [])
+        print(f'movimentacao_data: {movimentacao_data}')
+        print(f'items_data: {items_data}')
 
         movimentacao_serializer = SceMovimentacaoEstoqueSerializer(data=movimentacao_data)
         if movimentacao_serializer.is_valid():

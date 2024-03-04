@@ -27,35 +27,44 @@ function Header() {
                                 title="Cadastros"
                                 id="basic-nav-dropdown"
                             >
-                                <LinkContainer to="pessoas">
-                                    <NavDropdown.Item>Pessoas</NavDropdown.Item>
-                                </LinkContainer>
-                                <LinkContainer to="categorias">
+                                <LinkContainer to="almoxarifados">
                                     <NavDropdown.Item>
-                                        Categorias
+                                        Almoxarifados
                                     </NavDropdown.Item>
                                 </LinkContainer>
-                                <LinkContainer to="enderecos">
+                                <LinkContainer to="empresas">
                                     <NavDropdown.Item>
-                                        Endereços
+                                        Empresas
                                     </NavDropdown.Item>
                                 </LinkContainer>
-                                <LinkContainer to="estadoscivis">
+                                <LinkContainer to="tiposprodutos">
                                     <NavDropdown.Item>
-                                        Estados Civis
+                                        Tipos de Produtos
                                     </NavDropdown.Item>
                                 </LinkContainer>
-                                <LinkContainer to="generos">
-                                    <NavDropdown.Item>Generos</NavDropdown.Item>
-                                </LinkContainer>
-                                <LinkContainer to="profissoes">
+                                <LinkContainer to="classesprodutos">
                                     <NavDropdown.Item>
-                                        Profissoes
+                                        Classes de Produtos
                                     </NavDropdown.Item>
                                 </LinkContainer>
-                                <LinkContainer to="igrejas">
+                                <LinkContainer to="subclassesprodutos">
                                     <NavDropdown.Item>
-                                        Igrejas
+                                        Subclasses de Produtos
+                                    </NavDropdown.Item>
+                                </LinkContainer>
+                                <LinkContainer to="produtos">
+                                    <NavDropdown.Item>
+                                        Produtos
+                                    </NavDropdown.Item>
+                                </LinkContainer>
+                                <LinkContainer to="clientes">
+                                    <NavDropdown.Item>
+                                        Clientes
+                                    </NavDropdown.Item>
+                                </LinkContainer>
+                                <LinkContainer to="movimentacaoestoques">
+                                    <NavDropdown.Item>
+                                        Movimentação de Estoque
                                     </NavDropdown.Item>
                                 </LinkContainer>
                                 <NavDropdown.Divider />
